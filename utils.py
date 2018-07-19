@@ -30,7 +30,7 @@ def index_data(sentences, dictionary):
 def get_train_data(vocabulary, batch_size, num_steps):
     with open('dictionary.json','r') as file :
         dictionary = json.load(file, encoding= 'utf-8')
-    """
+    r"""
     参照dynamic_rnn_in_tf中的gen_batch(raw_data, batch_size, num_steps)
     dictionary('文字1':1, '文字2'：2,......)
     输入数据vocabulary中的汉字转换为数字储存
@@ -48,23 +48,23 @@ def get_train_data(vocabulary, batch_size, num_steps):
             Y.append(['UNK'])
     X_length = len(X)
     Y.append(0)# 添加标签Y
-    """
+    r"""
     每个batchsize有多少个数据
     """
     batch_partition_length = X_length // batch_size
-    """
+    r"""
     初始化数据
     """
     data_X = np.zeros([batch_size, batch_partition_length], dtype=tf.int32)
     data_Y = np.zeros([batch_size, batch_partition_length], dtype=tf.int32)
-    """
+    r"""
     按batch_size分割开
     """
     for i in range(batch_size):
         data_X = X[batch_partition_length * i:batch_partition_length * (i+1)]
         data_Y = Y[batch_partition_length * i:batch_partition_length * (i+1)]
     epoch_size = batch_partition_length // num_steps
-    """
+    r"""
     返回X,Y
     """
     for i in range(epoch_size):
