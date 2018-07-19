@@ -25,7 +25,7 @@ with open(FLAGS.reversed_dictionary, encoding='utf-8') as inf:
 
 
 reverse_list = [reversed_dictionary[str(i)]
-                for i in range(len(reverse_dictionary))]
+                for i in range(len(reversed_dictionary))]
 titles = ['江神子', '蝶恋花', '渔家傲']
 
 
