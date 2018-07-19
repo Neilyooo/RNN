@@ -60,14 +60,14 @@ class Model():
             #根据embedding文字编号从中对向量表示出来
         outputs = []
         with tf.variable_scope('rnn'):
+            ****
 
-             """
-             r1.8版本tf.nn.rnn_cell.BasicLSTMCell，tf.contrib.rnn.BasicLSTMCell与其是一样的函数
-             tf.contrib.rnn_cell.BasicLSTMCell(num_inits, forget_bias, state_is_turple,activation=None,reuse-None,name=None
-             根据源码可以看出，如果state_is_tuple=True,state是元组形式，state=(c,h),如果是Flase,state=tf.concat([c,h],1)
-             num_inits即是hidden层数,在这里应该就是指embedding的维度
-             """
-            
+            """
+            r1.8版本tf.nn.rnn_cell.BasicLSTMCell，tf.contrib.rnn.BasicLSTMCell与其是一样的函数
+            tf.contrib.rnn_cell.BasicLSTMCell(num_inits, forget_bias, state_is_turple,activation=None,reuse-None,name=None
+            根据源码可以看出，如果state_is_tuple=True,state是元组形式，state=(c,h),如果是Flase,state=tf.concat([c,h],1)
+            num_inits即是hidden层数,在这里应该就是指embedding的维度
+            """            
             lstm_cell = tf.contrib.rnn_cell.BasicLSTMCell(self.dim_embedding, forget_bias=0.0, state_is_tuple=True)
             """
             tf.contrib.rnn_cell.DropoutWrapper( cell, input_keep_prob=1.0, output_keep_prob=1.0,
@@ -97,6 +97,7 @@ class Model():
         seq_output_final = tf.reshape(seq_output, [-1, self.dim_embedding])
 
         with tf.variable_scope('softmax'):
+            
             """
              W.shape=[hidden_size, 5000], 即是[128,5000]
              b.shape=[num_words] , [5000]
