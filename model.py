@@ -59,9 +59,7 @@ class Model():
             data = tf.nn.embedding_lookup(embed, self.X)# embedding_lookup看了文档感觉像是excel里面的lookup函数
             #根据embedding文字编号从中对向量表示出来
         outputs = []
-        with tf.variable_scope('rnn'):
-            ****
-
+        with tf.variable_scope('rnn'):            
             """
             r1.8版本tf.nn.rnn_cell.BasicLSTMCell，tf.contrib.rnn.BasicLSTMCell与其是一样的函数
             tf.contrib.rnn_cell.BasicLSTMCell(num_inits, forget_bias, state_is_turple,activation=None,reuse-None,name=None
