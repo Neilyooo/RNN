@@ -36,6 +36,8 @@ def get_train_data(vocabulary, batch_size, num_steps):
     输入数据vocabulary中的汉字转换为数字储存
     dictionary[0]是UNK
     """
+    X=[]
+    Y=[]
     for word in vocabulary:
         if X in dictionary.keys():
             X.append([word])
