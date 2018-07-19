@@ -26,8 +26,8 @@ print('Data size', len(vocabulary))
 with open(FLAGS.dictionary, encoding='utf-8') as inf:
     dictionary = json.load(inf, encoding='utf-8')
 
-with open(FLAGS.reverse_dictionary, encoding='utf-8') as inf:
-    reverse_dictionary = json.load(inf, encoding='utf-8')
+with open(FLAGS.reversed_dictionary, encoding='utf-8') as inf:
+    reversed_dictionary = json.load(inf, encoding='utf-8')
 
 
 model = Model(learning_rate=FLAGS.learning_rate, batch_size=FLAGS.batch_size, num_steps=FLAGS.num_steps)
