@@ -20,11 +20,11 @@ logging.basicConfig(
 with open(FLAGS.dictionary, encoding='utf-8') as inf:
     dictionary = json.load(inf, encoding='utf-8')
 
-with open(FLAGS.reverse_dictionary, encoding='utf-8') as inf:
+with open(FLAGS.reversed_dictionary, encoding='utf-8') as inf:
     reverse_dictionary = json.load(inf, encoding='utf-8')
 
 
-reverse_list = [reverse_dictionary[str(i)]
+reverse_list = [reversed_dictionary[str(i)]
                 for i in range(len(reverse_dictionary))]
 titles = ['江神子', '蝶恋花', '渔家傲']
 
