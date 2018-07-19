@@ -86,7 +86,7 @@ class Model():
             data维度[5000,128]
             """
             output, self.state_tensor = tf.nn.dynamic_rnn(cell, data, initial_state=self.state_tensor)
-            seq_output = tf.concat(output, 1)
+        seq_output = tf.concat(output, 1)
             ##################
             # Your Code here
             ##################
