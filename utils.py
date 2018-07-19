@@ -63,8 +63,8 @@ def get_train_data(vocabulary, batch_size, num_steps):
     按batch_size分割开
     """
     for i in range(batch_size):
-        data_X = X[batch_partition_length * i:batch_partition_length * (i+1)]
-        data_Y = Y[batch_partition_length * i:batch_partition_length * (i+1)]
+        data_X[i] = X[batch_partition_length * i:batch_partition_length * (i+1)]
+        data_Y[i] = Y[batch_partition_length * i:batch_partition_length * (i+1)]
     epoch_size = batch_partition_length // num_steps
     r"""
     返回X,Y
