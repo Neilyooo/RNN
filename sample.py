@@ -21,7 +21,7 @@ with open(FLAGS.dictionary, encoding='utf-8') as inf:
     dictionary = json.load(inf, encoding='utf-8')
 
 with open(FLAGS.reversed_dictionary, encoding='utf-8') as inf:
-    reverse_dictionary = json.load(inf, encoding='utf-8')
+    reversed_dictionary = json.load(inf, encoding='utf-8')
 
 
 reverse_list = [reversed_dictionary[str(i)]
