@@ -40,14 +40,14 @@ def get_train_data(vocabulary, batch_size, num_steps):
     Y=[]
     for word in vocabulary:
         if word in dictionary.keys():
-            X.append([word])
+            X.append(dictionary[word])
         else:
-            X.append(['UNK'])
+            X.append(dictionary['UNK'])
     for word in vocabulary[1:]:
         if word in dictionary.keys():
-            Y.append([word])
+            Y.append(dictionary[word])
         else:
-            Y.append(['UNK'])
+            Y.append(dictionary['UNK'])
     X_length = len(X)
     Y.append(0)# 添加标签Y
     r"""
