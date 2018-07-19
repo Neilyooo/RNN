@@ -73,7 +73,7 @@ class Model():
                input_size=None, dtype=None, seed=None,
                dropout_state_filter_visitor=None)这里其他参数为默认值,这里的cell为列表形式
             """
-            lstm_cell = tf.contrib.rnn_cell.DropoutWrapper([lstm_cell], output_keep_prob=self.keep_prob)
+            lstm_cell = tf.nn.rnn_cell.DropoutWrapper([lstm_cell], output_keep_prob=self.keep_prob)
             r"""
             tf.nn.rnn_cell.MultiRNNCell(cell,state_is_tuple),cell就是RNN的cell
             """
