@@ -54,7 +54,7 @@ with tf.Session() as sess:
         logging.debug('epoch [{0}]....'.format(x))
         state = sess.run(model.state_tensor)
         for dl in utils.get_train_data(vocabulary, batch_size=FLAGS.batch_size, num_steps=FLAGS.num_steps):
-            """
+            r"""
             get_train_data()函数返回(x,y)
             """
             feed_dict={model.X:x, model.Y:y, model.state_tensor: state, model.keep_prob: 0.8}
