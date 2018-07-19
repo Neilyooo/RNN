@@ -58,7 +58,7 @@ class Model():
 
             data = tf.nn.embedding_lookup(embed, self.X)# embedding_lookup看了文档感觉像是excel里面的lookup函数
             #根据embedding文字编号从中对向量表示出来
-
+        outputs = []
         with tf.variable_scope('rnn'):
 
              """
@@ -67,7 +67,7 @@ class Model():
              根据源码可以看出，如果state_is_tuple=True,state是元组形式，state=(c,h),如果是Flase,state=tf.concat([c,h],1)
              num_inits即是hidden层数,在这里应该就是指embedding的维度
              """
-            outputs = []
+            
             lstm_cell = tf.contrib.rnn_cell.BasicLSTMCell(self.dim_embedding, forget_bias=0.0, state_is_tuple=True)
             """
             tf.contrib.rnn_cell.DropoutWrapper( cell, input_keep_prob=1.0, output_keep_prob=1.0,
