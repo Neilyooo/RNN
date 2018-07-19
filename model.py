@@ -81,11 +81,11 @@ class Model():
             r"""
             初始化state_tensor用于train.py训练
             """
-            self.state_tensor = cell.zero_state(batch_size, dtype=tf.int32)
+            self.state_tensor = cell.zero_state(batch_size, dtype=tf.float32)
             r"""
             data维度[5000,128]
             """
-            output, self.state_tensor = tf.nn.dynamic_rnn(cell, data, initial_state=self.state_tensor)
+            output, self.outputs_state_tensor = tf.nn.dynamic_rnn(cell, data, initial_state=self.state_tensor)
         seq_output = tf.concat(output, 1)
             ##################
             # Your Code here
