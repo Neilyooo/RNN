@@ -57,8 +57,8 @@ def get_train_data(vocabulary, batch_size, num_steps):
     r"""
     初始化数据
     """
-    data_X = np.zeros([batch_size, batch_partition_length], dtype=tf.int32)
-    data_Y = np.zeros([batch_size, batch_partition_length], dtype=tf.int32)
+    data_X = np.zeros([batch_size, batch_partition_length], dtype=np.int32)
+    data_Y = np.zeros([batch_size, batch_partition_length], dtype=np.int32)
     r"""
     按batch_size分割开
     """
