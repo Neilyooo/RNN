@@ -58,3 +58,6 @@ for i in range(batch_size//num_skips):
   这里的get_train_data函数，我参照了dynamic_rnn_in_tf文件，按照代码的计算，计算的一个epoch需要的steps跟老师文档的19220steps差距很大，不知道我是哪里搞错了概念<br>
 * loss<br>
   对于此次作业结果来看，效果并不是很好，运行了18wsteps，loss还是在5-6之间震荡。不过按照文档解释或许在40Wsteps后，会趋于收敛。
+* tsne.png
+  我增加了显示字词的数目，在底部有二三四这几个数字的向量，说明word2vec还算实现得较好(60Wsteps)
+
