@@ -15,12 +15,14 @@ buffer.exteng(data[data_index:data_index + span])
 data_index += span
 ```
 <br>
-  从这个代码可以看出buffer里面的数据是data_index周围span个数据（deque查了资料是一种双向队列）<br>
+  从这个代码可以看出buffer里面的数据是data_index周围span个数据（deque查了资料是一种双向队列）
+  
 ```
 for i in range(batch_size//num_skips):
   context_words = [w for w in range(span) w!=skip_window]
   words_to_use = random.sample(context_words, num_skips)
 ```
+
 <br>
   `context_words`不能以自己(skip_window)为上下文，所以要排除。`words_to_use`随机从context_words中选取num_skips个单词。<br>
   `embedding=tf.Variable(tf.random_uniform([vocabulary_size, embedding_size],-1,1)`初始化embedding数据，维度：[5000,128]<br>
