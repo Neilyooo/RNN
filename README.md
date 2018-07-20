@@ -53,6 +53,8 @@ for i in range(batch_size//num_skips):
   具体计算公式`list_clipped[i]=t_list[i] * clip_norm / max(global_norm, clip_norm)`,其中`global_norm = sqrt(sum([l2norm(t)**2 for t in t_list]))`
   `self.optimizer = train_op.apply_gradients(zip(grads, tvars), global_step=self.global_step)`。<br>
   
-## get_train_data()
-
-  这里的get_train_data函数，我参照了dynamic_rnn_in_tf文件，按照代码的计算，计算的一个epoch需要的steps跟老师文档的19220steps差距很大，不知道我是哪里搞错了概念
+## 总结
+* get_train_data()<br>
+  这里的get_train_data函数，我参照了dynamic_rnn_in_tf文件，按照代码的计算，计算的一个epoch需要的steps跟老师文档的19220steps差距很大，不知道我是哪里搞错了概念<br>
+* loss<br>
+  对于此次作业结果来看，效果并不是很好，运行了18wsteps，loss还是在5-6之间震荡。不过按照文档解释或许在40Wsteps后，会趋于收敛。
