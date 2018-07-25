@@ -12,7 +12,7 @@ span = 2 * skip_window + 1
 buffer = collections.deque(maxlen=span)
 for _ in range(span):
   data_index = 0
-buffer.exteng(data[data_index:data_index + span])
+buffer.extend(data[data_index:data_index + span])
 data_index += span
 ```
 
@@ -37,7 +37,7 @@ for i in range(batch_size//num_skips):
 * LSTM主要改进是有三个门控制：输入门、输出门、遗忘门，由sigmoid函数和点积操作构成的。因为经过sigmoid函数处理可以将处理的信息看成（0,1）的接收比例，0就是
 全部忘记。因为早期记忆会随时间呈指数级衰减，LSTM模型在RNN原有ht基础上，增加了一个Ct来保持长期记忆，Ct是依赖遗忘门、输入门的输出进行更新。<br>
 * 实现LSTM结构可分为：**多层LSTM构建**、**输入预处理**、**LSTM循环**、**损失函数计算**、**梯度计算**<br>
-* **LSTM的构建及状态初始化**：`cell=tf.nn.rnn_cell.MultiRNNCell([lstm_cell]*self.rnn_layers,state_is_tuple=True)`这里出入参数需要是列表形式<br>
+* **LSTM的构建及状态初始化**：`cell=tf.nn.rnn_cell.MultiRNNCell([lstm_cell]*self.rnn_layers,state_is_tuple=True)`这里输入参数需要是列表形式<br>
   `rnn_layers`指的是rnn层数，这个函数是将他们组合到一起。<br>
   `lstm_cell`是经过`tf.contrib.rnn.BasicLSTMCell(self.embedding, forget_bias=0.0, state_is_tuple=True)`返回。<br>
   `self.state_tensor = cell.zero_state(self.batch_size, dtype=tf.float32)`初始化state_tensor,维度为batch_size。<br>
