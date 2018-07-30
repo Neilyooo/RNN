@@ -44,7 +44,7 @@ for i in range(batch_size//num_skips):
 * **输入预处理**:`data=tf.nn.embedding_lookup(embed,self.X)`数据准备经过word2vec，将需要的dictionary,reversed_dictionary,embedding保存出来。<br>
 * **LSTM循环训练**:这里我采用`tf.nn.dynamic_rnn`进行对数据训练。<br>
   `output, self.outputs_state_tensor=tf.nn.dynamic_rnn(cell,data,initate_state=self.state_tensor)`。data数据维度[5000,128]<br>
-  `seq_output_final = tf.reshape(tf.concat(output,1), [-1, self.dim_embedding])`,dim_embedding=128,output维度[num_steps][batch_size,hidden_size]<br>
+  `seq_output_final = tf.reshape(tf.concat(output,1), [-1, self.dim_embedding])`,dim_embedding=128,output维度[num_steps][batch_size,dim_embedding],经过reshape后,[batch_size*num_steps, dim_embedding]<br>
 * **损失函数**: `loss = tf.nn.sparse_softmax_cross_entropy_with_logits(labels=tf.reshape(self.Y, [-1]), logits= logits)`同样是交叉熵<br>
   `var_loss = tf.divide(10.0, 1.0+tf.reduce_mean(var))`标准差<br>
   `self.loss = self.loss + var_loss`总损失<br>
