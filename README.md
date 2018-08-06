@@ -1,5 +1,5 @@
 # RNN
-[tinymind](https://www.tinymind.com/executions/9tp2oxp8 'tinymind')<br>
+输出计算在云端[tinymind](https://www.tinymind.com/executions/9tp2oxp8 'tinymind')<br>
 ## 单词向量化的理解
 * 所谓单词向量化，就是将每个单词映射到一个向量当中，代码中使用的skip-garm模型是用目标词来预测上下文信息，输入一个单词，根据embedding转换对应的数字化后的向量
 使其输出也是一个单词(经过ont-hot)，下面简单解释一下代码。<br>
