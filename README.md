@@ -60,7 +60,7 @@ for i in range(batch_size//num_skips):
   具体计算公式`list_clipped[i]=t_list[i] * clip_norm / max(global_norm, clip_norm)`,其中`global_norm = sqrt(sum([l2norm(t)**2 for t in t_list]))`
   `self.optimizer = train_op.apply_gradients(zip(grads, tvars), global_step=self.global_step)`。<br>
   
-## 总结
+## 后感
 * loss<br>
   对于此次结果来看，效果并不是很好，运行了18wsteps，loss还是在5-6之间震荡。一开始还只是学会了标点符号，而且这情况在经过几万steps还是会偶然出现，可见让计算机写诗并不是件简单的事，而且中文难度可能比英文还要高一点。
 
