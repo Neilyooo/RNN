@@ -2,6 +2,8 @@
 输出计算在云端[tinymind](https://www.tinymind.com/executions/9tp2oxp8 'tinymind')<br>
 ## 单词向量化的理解
 * 所谓单词向量化，就是将每个单词映射到一个向量当中，代码中使用的skip-garm模型是用目标词来预测上下文信息，输入一个单词，根据embedding转换对应的数字化后的向量
+## skip-gram模型
+输入input（一段文字）,输出output是有上文联系O<sub>1</sub><sub>o</sub>,O<sub>2</sub><sub>o</sub>...O<sub>C</sub><sub>o</sub>(C即代码中的skip_window上下文窗口)。输入代表这某个词的one-hot编码，经过权重矩阵W计算(这个权重W应该是包含了训练数据的全部信息即权重共享)，计算其概率分布，输出概率最大的字。<br>
 使其输出也是一个单词(经过ont-hot)，下面简单解释一下代码。<br>
  `generate_batch(batch_size, num_skips, skip_window)`<br>
   **batch_size**：每次训练用多少数据。<br>
@@ -29,7 +31,11 @@ for i in range(batch_size//num_skips):
   `embedding=tf.Variable(tf.random_uniform([vocabulary_size, embedding_size],-1,1)`初始化embedding数据，维度：[5000,128]<br>
   `embedding=tf.nn.embedding_lookup(embeddings, train_inputs)`看了文档，用途跟excel的lookup函数一样作用,这里会将train_inputs和embeddings
   进行合并，并根据对已经编好号的词按相对应的数字进行查找。<br>
-  
+  **经过这段处理可以获得dictionary.json,reversed_dictionary.json,embedding.npy,tsne.png** <br>
+  **dictionary**:{"UNK":0,"文字1":1,"文字2":2......}，以文字出现的次数，最高记1，第二高记2以此类推。UNK是排在5000之后的词
+  **reversed_dictionary**:{"0":"UNK","1":"文字1".....}用数字作为Key作为索引
+  **embedding**:脚本输出，通过数字来找到相应单词
+  **tsne.png**:单词向量化可视化
 ## RNN以及LSTM
 
 * RNN中，输入序列(x1,x2,x3,...)是随着**time step**递进的，这些输入先经过U、W参数计算后得到一系列(o1,o2,o3....)输出，而且o2的计算还基于x2和o1。而且RNN的
@@ -55,10 +61,8 @@ for i in range(batch_size//num_skips):
   `self.optimizer = train_op.apply_gradients(zip(grads, tvars), global_step=self.global_step)`。<br>
   
 ## 总结
-* get_train_data()<br>
-  这里的get_train_data函数，我参照了dynamic_rnn_in_tf文件，按照代码的计算，计算的一个epoch需要的steps跟老师文档的19220steps差距很大，不知道我是哪里搞错了概念<br>
 * loss<br>
-  对于此次作业结果来看，效果并不是很好，运行了18wsteps，loss还是在5-6之间震荡。不过按照文档解释或许在40Wsteps后，会趋于收敛。
-* tsne.png
-  我增加了显示字词的数目，在底部有二三四这几个数字的向量，说明word2vec还算实现得较好(60Wsteps)
+  对于此次结果来看，效果并不是很好，运行了18wsteps，loss还是在5-6之间震荡。一开始还只是学会了标点符号，而且这情况在经过几万steps还是会偶然出现，可见让计算机写诗并不是件简单的事，而且中文难度可能比英文还要高一点。
+
+  
 
